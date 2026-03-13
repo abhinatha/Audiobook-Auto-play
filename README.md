@@ -27,6 +27,21 @@ Automatically advances to the next chapter (or audio file) when an audiobook tra
 - **Jellyfin** 10.10+ (tested on 10.11.5)
 - **.NET SDK 9.0** (for building)
 - Jellyfin server DLLs for compilation (copy from your server's install directory)
+```
+Jellyfin.Data.dll
+
+MediaBrowser.Common.dll
+
+MediaBrowser.Controller.dll
+
+MediaBrowser.Model.dll
+
+Microsoft.Extensions.DependencyInjection.Abstractions.dll
+
+Microsoft.Extensions.Hosting.Abstractions.dll
+
+Microsoft.Extensions.Logging.Abstractions.dll
+```
 
 ---
 
