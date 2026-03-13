@@ -46,6 +46,7 @@ Microsoft.Extensions.Logging.Abstractions.dll
 ---
 
 ## Build
+I Compiled with Powershell
 
 ```bash
 cd AudiobookAutoPlay
