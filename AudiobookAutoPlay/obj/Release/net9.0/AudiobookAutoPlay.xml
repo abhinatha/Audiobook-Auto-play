@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AudiobookAutoPlay</name>
+    </assembly>
+    <members>
+        <member name="P:AudiobookAutoPlay.Configuration.PluginConfiguration.EnableAutoPlay">
+            <summary>
+            Enable or disable auto-play globally.
+            </summary>
+        </member>
+        <member name="P:AudiobookAutoPlay.Configuration.PluginConfiguration.DelaySeconds">
+            <summary>
+            Seconds to wait before starting the next chapter (0-60).
+            </summary>
+        </member>
+        <member name="P:AudiobookAutoPlay.Configuration.PluginConfiguration.ShowCountdownNotification">
+            <summary>
+            Show an on-screen countdown notification (reserved for future use).
+            </summary>
+        </member>
+        <member name="P:AudiobookAutoPlay.Configuration.PluginConfiguration.StopAtEndOfBook">
+            <summary>
+            Stop at the end of the book rather than wrapping.
+            </summary>
+        </member>
+        <member name="P:AudiobookAutoPlay.Configuration.PluginConfiguration.SavePositionBeforeAdvance">
+            <summary>
+            Save the resume point before advancing (reserved for future use).
+            </summary>
+        </member>
+    </members>
+</doc>

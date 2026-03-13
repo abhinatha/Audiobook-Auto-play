@@ -1,0 +1,51 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <FileVersion>1.0.0.0</FileVersion>
+    <AssemblyName>AudiobookAutoPlay</AssemblyName>
+    <RootNamespace>AudiobookAutoPlay</RootNamespace>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <!-- Path to your Jellyfin server install directory containing the DLLs -->
+    <JellyfinDir>C:\Users\Tilti\Desktop\here</JellyfinDir>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Configuration\configPage.html" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Jellyfin.Data">
+      <HintPath>$(JellyfinDir)\Jellyfin.Data.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="MediaBrowser.Model">
+      <HintPath>$(JellyfinDir)\MediaBrowser.Model.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="MediaBrowser.Common">
+      <HintPath>$(JellyfinDir)\MediaBrowser.Common.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="MediaBrowser.Controller">
+      <HintPath>$(JellyfinDir)\MediaBrowser.Controller.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging.Abstractions">
+      <HintPath>$(JellyfinDir)\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions">
+      <HintPath>$(JellyfinDir)\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Hosting.Abstractions">
+      <HintPath>$(JellyfinDir)\Microsoft.Extensions.Hosting.Abstractions.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+</Project>

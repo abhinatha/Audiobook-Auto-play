@@ -1,0 +1,14 @@
+C:\Users\Tilti\Desktop\AudiobookAutoPlay\AudiobookAutoPlay\bin\Release\net9.0\AudiobookAutoPlay.deps.json
+C:\Users\Tilti\Desktop\AudiobookAutoPlay\AudiobookAutoPlay\bin\Release\net9.0\AudiobookAutoPlay.dll
+C:\Users\Tilti\Desktop\AudiobookAutoPlay\AudiobookAutoPlay\bin\Release\net9.0\AudiobookAutoPlay.pdb
+C:\Users\Tilti\Desktop\AudiobookAutoPlay\AudiobookAutoPlay\bin\Release\net9.0\AudiobookAutoPlay.xml
+C:\Users\Tilti\Desktop\AudiobookAutoPlay\AudiobookAutoPlay\obj\Release\net9.0\AudiobookAutoPlay.csproj.AssemblyReference.cache
+C:\Users\Tilti\Desktop\AudiobookAutoPlay\AudiobookAutoPlay\obj\Release\net9.0\AudiobookAutoPlay.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Tilti\Desktop\AudiobookAutoPlay\AudiobookAutoPlay\obj\Release\net9.0\AudiobookAutoPlay.AssemblyInfoInputs.cache
+C:\Users\Tilti\Desktop\AudiobookAutoPlay\AudiobookAutoPlay\obj\Release\net9.0\AudiobookAutoPlay.AssemblyInfo.cs
+C:\Users\Tilti\Desktop\AudiobookAutoPlay\AudiobookAutoPlay\obj\Release\net9.0\AudiobookAutoPlay.csproj.CoreCompileInputs.cache
+C:\Users\Tilti\Desktop\AudiobookAutoPlay\AudiobookAutoPlay\obj\Release\net9.0\AudiobookAutoPlay.dll
+C:\Users\Tilti\Desktop\AudiobookAutoPlay\AudiobookAutoPlay\obj\Release\net9.0\refint\AudiobookAutoPlay.dll
+C:\Users\Tilti\Desktop\AudiobookAutoPlay\AudiobookAutoPlay\obj\Release\net9.0\AudiobookAutoPlay.xml
+C:\Users\Tilti\Desktop\AudiobookAutoPlay\AudiobookAutoPlay\obj\Release\net9.0\AudiobookAutoPlay.pdb
+C:\Users\Tilti\Desktop\AudiobookAutoPlay\AudiobookAutoPlay\obj\Release\net9.0\ref\AudiobookAutoPlay.dll

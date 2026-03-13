@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Audiobook Auto-Play</title>
+</head>
+<body>
+
+<div data-role="page" class="page type-interior" id="AudiobookAutoPlayConfigPage">
+    <div data-role="content">
+        <div class="content-primary">
+        <div class="verticalSection" style="max-width:600px">
+            <div class="sectionTitleContainer">
+                <h2 class="sectionTitle">Audiobook Auto-Play Settings</h2>
+            </div>
+
+            <p style="opacity:0.7;margin-bottom:1em;">
+                Note: On Jellyfin 10.11+ this settings page may not load correctly
+                due to the React-based dashboard. Edit the configuration XML directly
+                — see the plugin README for details.
+            </p>
+
+            <div class="checkboxContainer checkboxContainer-withDescription">
+                <label class="emby-checkbox-label">
+                    <input type="checkbox" id="chkEnableAutoPlay" is="emby-checkbox" />
+                    <span>Enable Auto-Play</span>
+                </label>
+                <div class="fieldDescription">Automatically start the next chapter when the current one finishes.</div>
+            </div>
+
+            <div class="inputContainer">
+                <label class="inputLabel inputLabelUnfocused" for="txtDelaySeconds">Delay before next chapter (seconds)</label>
+                <input type="number" id="txtDelaySeconds" min="0" max="60" step="1" is="emby-input" />
+                <div class="fieldDescription">Set to 0 for immediate playback.</div>
+            </div>
+
+            <div class="checkboxContainer checkboxContainer-withDescription">
+                <label class="emby-checkbox-label">
+                    <input type="checkbox" id="chkShowCountdown" is="emby-checkbox" />
+                    <span>Show countdown notification</span>
+                </label>
+                <div class="fieldDescription">Display an on-screen timer before the next chapter begins.</div>
+            </div>
+
+            <div class="checkboxContainer checkboxContainer-withDescription">
+                <label class="emby-checkbox-label">
+                    <input type="checkbox" id="chkSavePosition" is="emby-checkbox" />
+                    <span>Save position before advancing</span>
+                </label>
+                <div class="fieldDescription">Preserve the resume point for the current chapter before moving on.</div>
+            </div>
+
+            <div class="checkboxContainer checkboxContainer-withDescription">
+                <label class="emby-checkbox-label">
+                    <input type="checkbox" id="chkStopAtEnd" is="emby-checkbox" />
+                    <span>Stop at end of book</span>
+                </label>
+                <div class="fieldDescription">Do nothing when the last chapter finishes (recommended).</div>
+            </div>
+
+            <div>
+                <button id="btnSave" is="emby-button" class="raised button-submit block">
+                    <span>Save</span>
+                </button>
+                <p id="abap-save-status" style="margin-top:12px;font-weight:bold"></p>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    (function () {
+        'use strict';
+
+        var PLUGIN_ID = 'a1b2c3d4-e5f6-7890-abcd-ef1234567890';
+
+        function val(obj, name) {
+            if (obj[name] !== undefined) return obj[name];
+            var c = name.charAt(0).toLowerCase() + name.slice(1);
+            if (obj[c] !== undefined) return obj[c];
+            return undefined;
+        }
+
+        function setVal(obj, name, v) {
+            if (obj.hasOwnProperty(name)) { obj[name] = v; return; }
+            var c = name.charAt(0).toLowerCase() + name.slice(1);
+            if (obj.hasOwnProperty(c)) { obj[c] = v; return; }
+            obj[name] = v;
+        }
+
+        function loadConfig() {
+            ApiClient.getPluginConfiguration(PLUGIN_ID).then(function (config) {
+                document.getElementById('chkEnableAutoPlay').checked = !!val(config, 'EnableAutoPlay');
+                document.getElementById('txtDelaySeconds').value = val(config, 'DelaySeconds') || 0;
+                document.getElementById('chkShowCountdown').checked = !!val(config, 'ShowCountdownNotification');
+                document.getElementById('chkSavePosition').checked = !!val(config, 'SavePositionBeforeAdvance');
+                document.getElementById('chkStopAtEnd').checked = !!val(config, 'StopAtEndOfBook');
+            }).catch(function () {});
+        }
+
+        function saveConfig() {
+            ApiClient.getPluginConfiguration(PLUGIN_ID).then(function (config) {
+                setVal(config, 'EnableAutoPlay', document.getElementById('chkEnableAutoPlay').checked);
+                setVal(config, 'DelaySeconds', parseInt(document.getElementById('txtDelaySeconds').value, 10) || 0);
+                setVal(config, 'ShowCountdownNotification', document.getElementById('chkShowCountdown').checked);
+                setVal(config, 'SavePositionBeforeAdvance', document.getElementById('chkSavePosition').checked);
+                setVal(config, 'StopAtEndOfBook', document.getElementById('chkStopAtEnd').checked);
+                return ApiClient.updatePluginConfiguration(PLUGIN_ID, config);
+            }).then(function () {
+                if (typeof Dashboard !== 'undefined' && Dashboard.processPluginConfigurationUpdateResult)
+                    Dashboard.processPluginConfigurationUpdateResult();
+                var s = document.getElementById('abap-save-status');
+                if (s) { s.textContent = 'Settings saved.'; setTimeout(function () { s.textContent = ''; }, 3000); }
+            }).catch(function () {});
+        }
+
+        // Attach save handler
+        try {
+            document.getElementById('btnSave').addEventListener('click', function (e) {
+                e.preventDefault();
+                saveConfig();
+            });
+        } catch (ex) {}
+
+        // Try to load via page events
+        try {
+            var page = document.getElementById('AudiobookAutoPlayConfigPage');
+            page.addEventListener('pageshow', loadConfig);
+            page.addEventListener('viewshow', loadConfig);
+        } catch (ex) {}
+
+        // Poll for ApiClient as fallback
+        var tries = 0;
+        var timer = setInterval(function () {
+            tries++;
+            if (typeof ApiClient !== 'undefined' && ApiClient.getPluginConfiguration) {
+                clearInterval(timer);
+                loadConfig();
+            }
+            if (tries > 100) clearInterval(timer);
+        }, 100);
+    })();
+</script>
+
+</body>
+</html>
