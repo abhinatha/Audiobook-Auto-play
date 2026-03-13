@@ -10,7 +10,7 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
     <!-- Path to your Jellyfin server install directory containing the DLLs -->
-    <JellyfinDir>C:\Users\Tilti\Desktop\here</JellyfinDir>
+    <JellyfinDir>C:\Users\you\here</JellyfinDir>
   </PropertyGroup>
 
   <ItemGroup>
