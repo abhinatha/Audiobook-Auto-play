@@ -1,3 +1,6 @@
+License
+GNU General Public License v3.0
+
 # Audiobook-Auto-play
 This is an auto advance to the next chapter of audio book plugin for Jellyfin //// server version:10.11.5
 
